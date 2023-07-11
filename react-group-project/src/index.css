@@ -16,3 +16,14 @@ body {
     color: rgb(30, 146, 74);
     font-weight: bold;
 }
+
+@media screen and (min-width: 1024px) {
+.selected:hover {
+    background-color: rgb(30 41 59);
+    color: rgb(46, 211, 109);
+}
+.nav_link:hover {
+    background-color: rgb(30 41 59);
+    color: white;
+}
+}
