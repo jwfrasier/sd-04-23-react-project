@@ -1,6 +1,6 @@
 import "./App.css";
-import Component1 from "./components/Component1";
-import Component2 from "./components/Component2";
+import Component1 from "./components/team1/Component1";
+import Component2 from "./components/team2/Component2";
 import Home from "./components/Home";
 import Nav from "./components/Nav";
 import { useState } from "react";
