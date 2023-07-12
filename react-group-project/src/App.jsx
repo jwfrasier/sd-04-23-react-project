@@ -6,15 +6,14 @@ import Nav from "./components/Nav";
 import { useState } from "react";
 
 function App() {
-      const [isSelected, setIsSelected] = useState("Home");
+  const [isSelected, setIsSelected] = useState("Home");
   return (
     <div>
+      <Nav isSelected={isSelected} setIsSelected={setIsSelected} />
 
-      <Nav isSelected={isSelected} setIsSelected={setIsSelected}/>
-      
-      {isSelected == "Home" && <Home />}
-      {isSelected == "Team 1" && <Component1 />}
-      {isSelected == "Team 2" && <Component2 />}
+      {isSelected === "Home" && <Home />}
+      {isSelected === "Team 1" && <Component1 />}
+      {isSelected === "Team 2" && <Component2 />}
     </div>
   );
 }
