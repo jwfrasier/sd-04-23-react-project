@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { MainTable } from "./MainTable";
 
 import supabase from "../../supabase";
 
@@ -24,12 +25,10 @@ const Component1 = () => {
 
   return (
     <>
-      <div>Component1</div>
       <div>
-        {esports?.map((esport) => (
-          <div key={esport.UUID}>{esport.Username}</div>
-        ))}
+        <MainTable esports={esports} />
       </div>
+
       <div>Component1</div>
     </>
   );
