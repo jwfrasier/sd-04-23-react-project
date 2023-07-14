@@ -5,18 +5,28 @@ import Home from "./components/Home";
 import Nav from "./components/Nav";
 import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
-const supabase = createClient(
-  "https://mxakcphctxajogkuteth.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYyMDE0NTg3OCwiZXhwIjoxOTM1NzIxODc4fQ.0qra9FQYuKCkgMteZ0ZAe2wrMx2v1IFGwsU60Oi4KwY"
-);
+
+import supabaseConfig from "../../supabaseConfig";
 
 function App() {
+  const { supabaseUrl, supabaseKey } = supabaseConfig;
+
+  const supabase = createClient(supabaseUrl, supabaseKey);
   useEffect(() => {
     const fetchEsportsData = async () => {
       const { data: esports, error } = await supabase.from("esports").select();
       console.log(esports);
     };
     fetchEsportsData();
+  });
+  useEffect(() => {
+    const fetchEsportsTournamentsData = async () => {
+      const { data: tournaments, error } = await supabase
+        .from("esports-tournaments")
+        .select();
+      console.log(tournaments);
+    };
+    fetchEsportsTournamentsData();
   });
   const [isSelected, setIsSelected] = useState("Home");
   return (
