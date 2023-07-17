@@ -10,6 +10,28 @@ import supabaseConfig from "../../supabaseConfig";
 import Tournament from "./components/team2/Tournament";
 
 function App() {
+  const tournamentImages = [
+    {
+      image:
+        "https://populous.com/wp-content/uploads/2018/12/DSC08300_STAGE.jpg",
+    },
+    {
+      image:
+        "https://www.bdcnetwork.com/sites/default/files/Opener%20Image%20copy.jpg",
+    },
+    {
+      image:
+        "https://assets.dmagstatic.com/wp-content/uploads/2018/04/esports-stadium.jpg",
+    },
+    {
+      image:
+        "https://www.hollywoodreporter.com/wp-content/uploads/2019/09/gettyimages-1006862844-h_2019.jpg?w=1296",
+    },
+    {
+      image:
+        "https://images.squarespace-cdn.com/content/v1/5a8279c1e9bfdf6753e7366c/1653080780722-NDQ9G6ASSJ762ET6YI2P/ARENAWIDE-MOCKUP_1920X1280_72DPI.png?format=2500w",
+    },
+  ];
   const { supabaseUrl, supabaseKey } = supabaseConfig;
 
   const supabase = createClient(supabaseUrl, supabaseKey);
@@ -35,7 +57,9 @@ function App() {
       <Nav isSelected={isSelected} setIsSelected={setIsSelected} />
 
       {isSelected === "Home" && <Home />}
-      {isSelected === "Tournament" && <Tournament />}
+      {isSelected === "Tournament" && (
+        <Tournament tournamentImages={tournamentImages} />
+      )}
       {isSelected === "Team 2" && <Component2 />}
     </div>
   );
