@@ -6,7 +6,7 @@ const initialState = {
 };
 
 export const fetchEsports = createAsyncThunk("data/getEsports", async () => {
-  const { data } = await supabase.from("esports").select();
+  const { data } = await supabase.from("esports").select().range(0, 19);
   return data;
 });
 

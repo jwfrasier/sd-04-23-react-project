@@ -18,6 +18,7 @@ export const MainTable = () => {
   }, [dispatch]);
 
   const data = useMemo(() => esports, [esports]);
+  console.log(data);
 
   /** @type import (`@tanstack/react-table`).ColumnDef<any> */
 
@@ -37,6 +38,22 @@ export const MainTable = () => {
     {
       header: `Energy Drink`,
       accessorKey: `Energy Drink`,
+    },
+    {
+      header: `Twitch`,
+      accessorKey: `Twitch`,
+    },
+    {
+      header: `Country`,
+      accessorKey: `Country`,
+    },
+    {
+      header: `Age`,
+      accessorKey: `Age`,
+    },
+    {
+      header: `Apparel`,
+      accessorKey: `Apparel`,
     },
   ];
 
