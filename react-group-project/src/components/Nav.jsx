@@ -7,7 +7,7 @@ import { PiNumberOneBold, PiNumberTwoBold } from "react-icons/pi";
 const Nav = ({ isSelected, setIsSelected }) => {
   const links = [
     { text: "Home", icon: <FaHome /> },
-    { text: "Tournament", icon: <PiNumberOneBold /> },
+    { text: "Tournaments", icon: <PiNumberOneBold /> },
     { text: "Team 2", icon: <PiNumberTwoBold /> },
   ];
 
