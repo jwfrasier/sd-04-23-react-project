@@ -13,7 +13,7 @@ function App() {
   const tournamentImages = [
     {
       image:
-        "https://populous.com/wp-content/uploads/2018/12/DSC08300_STAGE.jpg",
+        "https://www.esports.net/wp-content/uploads/2020/01/what-is-esports.jpg",
     },
     {
       image:
@@ -57,7 +57,7 @@ function App() {
       <Nav isSelected={isSelected} setIsSelected={setIsSelected} />
 
       {isSelected === "Home" && <Home />}
-      {isSelected === "Tournament" && (
+      {isSelected === "Tournaments" && (
         <Tournament tournamentImages={tournamentImages} />
       )}
       {isSelected === "Team 2" && <Component2 />}
