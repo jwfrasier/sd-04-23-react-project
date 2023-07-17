@@ -1,18 +1,41 @@
+.product-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 5rem;
+  text-align: center;
+  color: #224229;
+}
+
 .product-card {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px;
-  margin-bottom: 10px;
-  width: calc(33.33% - 20px); /* Calculate width for three cards per row */
-  height: 200px;
-  display: inline-block; /* Change display to inline-block */
-  box-sizing: border-box; /* Include padding and border within the width */
-  text-align: center; /* Center the content horizontally */
+  width: 33%; /* Adjust the width to fit three cards in a row */
+
+  padding: 1rem;
+  font-weight: 600;
+}
+
+.product-card h2 {
+  margin-top: 0;
 }
 
 .product-card img {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 70%;
+}
+.product-card:nth-last-child(2) {
+  /* Apply styles to the second-to-last card */
+  padding-left: 100px;
+  margin-left: 150px;
+  width: 35%;
+}
+.product-card:last-child {
+  /* Apply styles to the last card */
+  padding-right: 100px;
+  margin-right: 150px;
+  width: 35%;
+}
+nav {
+  position: fixed;
 }
 .home-page {
   background-image: url("https://populous.com/wp-content/uploads/2018/12/DSC08300_STAGE.jpg");
@@ -27,4 +50,18 @@
   align-items: center;
   justify-content: center;
   color: white;
+}
+.Buttons {
+  display: flex;
+}
+.Buttons button {
+  background-color: rgb(64, 64, 200);
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  transition: opacity 0.3s; /* Add a transition for smooth fading effect */
+}
+.Buttons button:hover {
+  opacity: 0.6; /* Reduce opacity when the button is hovered */
 }
