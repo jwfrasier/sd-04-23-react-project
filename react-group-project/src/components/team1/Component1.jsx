@@ -1,6 +1,5 @@
 import { MainTable } from "./MainTable";
 
-import supabase from "../../supabase";
 import FilterBar from "./FilterBar";
 
 const Component1 = () => {

@@ -10,14 +10,14 @@ import { fetchEsports } from "../../reducers/esportsSlice";
 
 export const MainTable = () => {
   const dispatch = useDispatch();
-  const esports = useSelector((state) => state.esports.value);
+  const filteredData = useSelector((state) => state.esports.filteredValue);
   const loading = useSelector((state) => state.esports.loading);
 
   useEffect(() => {
     dispatch(fetchEsports());
   }, [dispatch]);
 
-  const data = useMemo(() => esports, [esports]);
+  const data = useMemo(() => filteredData, [filteredData]);
   console.log(data);
 
   /** @type import (`@tanstack/react-table`).ColumnDef<any> */
@@ -63,8 +63,8 @@ export const MainTable = () => {
     getCoreRowModel: getCoreRowModel(),
   });
 
-  console.log(table.getRowModel());
-  console.log({ esports });
+  // console.log(table.getRowModel());
+  // console.log({ esports });
 
   return (
     <>
