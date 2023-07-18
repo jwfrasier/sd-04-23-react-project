@@ -1,24 +1,20 @@
-/** @format */
-
+import React, { useState } from "react";
 import "../../App.css";
-import React from "react";
+import { useSelector } from "react-redux";
+import { createClient } from "@supabase/supabase-js";
 import {
   useReactTable,
   getCoreRowModel,
   flexRender,
 } from "@tanstack/react-table";
-import { useMemo } from "react";
-
-import { useState, useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
-
 import supabaseConfig from "../../../../supabaseConfig";
-
-function players() {
+import { useEffect } from "react";
+function Players() {
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [esports, setEsports] = useState([]);
   const { supabaseUrl, supabaseKey } = supabaseConfig;
-
   const supabase = createClient(supabaseUrl, supabaseKey);
+
   useEffect(() => {
     const fetchEsportsData = async () => {
       const { data, error } = await supabase.from("esports").select();
@@ -58,6 +54,10 @@ function players() {
     getCoreRowModel: getCoreRowModel(),
   });
 
+  const handlePlayerClick = (player) => {
+    setSelectedPlayer(player);
+  };
+
   return (
     <div className="flex p-10 mt-5 justify-evenly">
       <table>
@@ -76,7 +76,7 @@ function players() {
 
         <tbody>
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
+            <tr key={row.id} onClick={() => handlePlayerClick(row.original)}>
               {row.getVisibleCells().map((cell) => (
                 <td key={cell.id}>
                   <span>
@@ -88,8 +88,37 @@ function players() {
           ))}
         </tbody>
       </table>
+
+      {/* Modal */}
+      {selectedPlayer && (
+        <div className="modal">
+          <div className="modal-content">
+            <h2>{selectedPlayer["Full Name"]}</h2>
+            <h1>EQUIPMENT</h1>
+            <p>PC: {selectedPlayer["Gaming PC"]}</p>
+            <p>Monitor: {selectedPlayer["Gaming Monitor"]}</p>
+            <p>Chair: {selectedPlayer["Gaming Chair"]}</p>
+            <p>Headset: {selectedPlayer.Headset}</p>
+            <p>Microphone: {selectedPlayer.Microphone}</p>
+            <h1>CONNECT</h1>
+            <p>streaming platform: {selectedPlayer["Streaming Platform"]}</p>
+            <p>Twitch: {selectedPlayer.Twitch}</p>
+            <p>Twitter: {selectedPlayer.Twitter}</p>
+            <p>Youtube: {selectedPlayer.YouTube}</p>
+            <h1>FUN FACTS</h1>
+            <p>Preferred Game: {selectedPlayer["Preferred Game"]}</p>
+            <p>Total hours played: {selectedPlayer["Total Hours Played"]}</p>
+            <p>
+              Tournament experience: {selectedPlayer["Tournament Experience"]}
+            </p>
+            <p>Favorite Pro Player: {selectedPlayer["Favorite Pro Player"]}</p>
+            <p>Favorite energy drink: {selectedPlayer["Energy Drink"]}</p>
+            <button onClick={() => setSelectedPlayer(null)}>Close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-export default players;
+export default Players;
