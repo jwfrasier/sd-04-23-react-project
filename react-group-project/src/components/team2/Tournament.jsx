@@ -22,6 +22,7 @@ const Tournament = ({ tournamentImages }) => {
       const { data, error } = await supabase
         .from("esports-tournaments")
         .select();
+      console.log(data);
 
       if (error) {
         // Handle the error if needed
