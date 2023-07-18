@@ -7,9 +7,13 @@ const Component1 = () => {
 
   return (
     <>
-      <div>
-        <FilterBar />
-        <MainTable />
+      <div className="flex">
+        <div>
+          <FilterBar />
+        </div>
+        <div className="mx-auto">
+          <MainTable />
+        </div>
       </div>
     </>
   );

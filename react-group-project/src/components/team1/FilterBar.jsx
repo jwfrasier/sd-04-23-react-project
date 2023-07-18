@@ -26,28 +26,28 @@ const FilterBar = () => {
 
   return (
     <>
-      <div className="mb-4">FilterBar</div>
-      <h1 className="mb-4">Hello!</h1>
-      <div className="space-x-4">
+      {/* <div className="mb-4">FilterBar</div> */}
+      {/* <h1 className="mb-4">Hello!</h1> */}
+      <div className="flex flex-col mb-4">
         {Object.entries(filters).map(([key, label]) => (
           <button
             key={key}
             onClick={() => handleFilterClick(key)}
             className={`px-4 py-2 rounded ${
-              activeFilter === key ? "bg-blue-500 text-white" : "bg-gray-200"
-            }`}
+              activeFilter === key ? "bg-indigo-500 text-white" : "bg-gray-200"
+            } hover:bg-white hover:text-indigo-500`}
           >
             {label}
           </button>
         ))}
       </div>
       {activeFilter && (
-        <div className="mt-4 space-x-4">
+        <div className="flex flex-col mb-4">
           {uniqueValues.map((item) => (
             <button
               key={item}
               onClick={() => handleClick(activeFilter, item)}
-              className="px-4 py-2 rounded bg-gray-200"
+              className="px-4 py-2 rounded bg-gray-200 hover:bg-white hover:text-indigo-500"
             >
               {item}
             </button>
@@ -56,7 +56,7 @@ const FilterBar = () => {
       )}
       <button
         onClick={() => handleClick(null, null)}
-        className="mt-4 px-4 py-2 rounded bg-red-500 text-white"
+        className="w-full mt-4 px-4 py-2 rounded bg-red-500 text-white hover:bg-white hover:text-red-500"
       >
         Remove Filters
       </button>
