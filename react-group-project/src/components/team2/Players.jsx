@@ -76,7 +76,7 @@ function Players() {
               {row.getVisibleCells().map((cell) => (
                 <td
                   key={cell.id}
-                  id={`Rank-${row.Rank}`}
+                  id={`Rank-${row.original.Rank}`}
                   className="text-white hover:bg-white hover:text-regal-blue ease-in duration-200 h-10   hover:cursor-pointer"
                 >
                   <span>
