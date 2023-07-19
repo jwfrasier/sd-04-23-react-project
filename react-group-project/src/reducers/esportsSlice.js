@@ -4,12 +4,21 @@ import supabase from "../supabase";
 const initialState = {
   value: [],
   filteredValue: [],
+  selectedRowData: null, // Add selectedRowData field to the initial state
 };
 
 export const fetchEsports = createAsyncThunk("data/getEsports", async () => {
-  const { data } = await supabase.from("esports").select().range(0, 19);
+  const { data } = await supabase.from("esports").select();
   return data;
 });
+
+// Add the setSelectedRowData action
+export const setSelectedRowData = (rowData) => {
+  return {
+    type: "esports/setSelectedRowData",
+    payload: rowData,
+  };
+};
 
 export const applyFilter = createAction(
   "esports/applyFilter",
@@ -44,6 +53,9 @@ export const esportsSlice = createSlice({
         } else {
           state.filteredValue = state.value;
         }
+      })
+      .addCase(setSelectedRowData, (state, action) => {
+        state.selectedRowData = action.payload;
       });
   },
 });
