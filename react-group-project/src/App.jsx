@@ -38,11 +38,13 @@ function App() {
     <div>
       <Nav isSelected={isSelected} setIsSelected={setIsSelected} />
 
-      {isSelected === "Home" && <Home />}
+      {isSelected === "Home" && (
+        <Home isSelected={isSelected} setIsSelected={setIsSelected} />
+      )}
       {isSelected === "Tournaments" && (
         <Tournament tournamentImages={tournamentImages} />
       )}
-      {isSelected === "Team 2" && <Players />}
+      {isSelected === "Players" && <Players />}
     </div>
   );
 }
