@@ -47,7 +47,7 @@
 .players-table {
   border-collapse: collapse;
   width: 100%;
-  background-color: #1f4591;
+  background-color: #444444;
 }
 
 .players-table th,
@@ -106,7 +106,7 @@ nav {
 }
 
 .modal-content {
-  background-color: #bfd7ed;
+  background-color: #f1c83a;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
@@ -126,9 +126,117 @@ nav {
 }
 
 td[id="Rank-Bronze"]:nth-child(4) {
-  background-color: red;
+  background: linear-gradient(to top, #2f1606, #ea9130);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  color: #333;
+  padding: 20px;
+  color: black;
 }
 
-td[id="Rank-undefined"]:nth-child(2) span {
-  background-color: #224229;
+td[id="Rank-Platinum"]:nth-child(4) {
+  background: linear-gradient(to top, #16295b, #b5a3ff);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  color: #333;
+  padding: 20px;
+  color: black;
+}
+td[id="Rank-Silver"]:nth-child(4) {
+  background: linear-gradient(to top, #212134, #b1b1b1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  color: #333;
+  padding: 20px;
+  color: black;
+}
+td[id="Rank-Gold"]:nth-child(4) {
+  background: linear-gradient(to top, #4f2c04, #ffd046);
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  color: #333;
+  padding: 20px;
+  color: black;
+}
+
+td[id="Rank-Diamond"]:nth-child(4) {
+  background: linear-gradient(to top, #1a83cc, #cbebf5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  color: #333;
+  padding: 20px;
+  color: black;
+}
+
+td[id="Rank-Master"]:nth-child(4) {
+  background: linear-gradient(to top, #603f8b, #efdcf9);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  color: #333;
+  padding: 20px;
+  color: black;
+}
+
+td[id="Rank-Bronze"]:nth-child(2) {
+  background-color: #747474;
+}
+
+td[id="Rank-Platinum"]:nth-child(2) {
+  background-color: #747474;
+}
+
+td[id="Rank-Silver"]:nth-child(2) {
+  background-color: #747474;
+}
+
+td[id="Rank-Gold"]:nth-child(2) {
+  background-color: #747474;
+}
+
+td[id="Rank-Diamond"]:nth-child(2) {
+  background-color: #747474;
+}
+
+td[id="Rank-Master"]:nth-child(2) {
+  background-color: #747474;
+}
+td[id="Rank-Bronze"]:nth-child(3) {
+  background-color: #b1b1b1;
+}
+
+td[id="Rank-Platinum"]:nth-child(3) {
+  background-color: #b1b1b1;
+}
+
+td[id="Rank-Silver"]:nth-child(3) {
+  background-color: #b1b1b1;
+}
+
+td[id="Rank-Gold"]:nth-child(3) {
+  background-color: #b1b1b1;
+}
+
+td[id="Rank-Diamond"]:nth-child(3) {
+  background-color: #b1b1b1;
+}
+
+td[id="Rank-Master"]:nth-child(3) {
+  background-color: #b1b1b1;
+}
+th[id="table-header"]:nth-child(1) {
+  background-color: #ffd129;
+  color: black;
+}
+th[id="table-header"]:nth-child(2) {
+  background-color: #ffd129;
+  color: black;
+}
+th[id="table-header"]:nth-child(3) {
+  background-color: #ffd129;
+  color: black;
+}
+th[id="table-header"]:nth-child(4) {
+  background-color: #ffd129;
+  color: black;
 }

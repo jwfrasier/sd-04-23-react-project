@@ -3,27 +3,27 @@
 @tailwind utilities;
 
 body {
-    background-color: rgb(229 231 235);
-    padding: 0;
-    margin: 0;
+  background-color: rgb(229 231 235);
+  padding: 0;
+  margin: 0;
 }
 
 .nav_shadow {
-    box-shadow: 0 -5px 5px rgb(192, 192, 194);
+  box-shadow: 0 -5px 5px rgb(192, 192, 194);
 }
 
 .selected {
-    color: rgb(30, 146, 74);
-    font-weight: bold;
+  color: #ff4655;
+  font-weight: bold;
 }
 
 @media screen and (min-width: 1024px) {
-.selected:hover {
+  .selected:hover {
     background-color: rgb(30 41 59);
-    color: rgb(46, 211, 109);
-}
-.nav_link:hover {
+    color: #ff4655;
+  }
+  .nav_link:hover {
     background-color: rgb(30 41 59);
     color: white;
-}
+  }
 }
