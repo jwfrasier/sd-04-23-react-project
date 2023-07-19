@@ -60,7 +60,7 @@ function Players() {
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
-              <th key={header.id}>
+              <th id="table-header" key={header.id}>
                 {flexRender(
                   header.column.columnDef.header,
                   header.getContext()
@@ -77,7 +77,7 @@ function Players() {
                 <td
                   key={cell.id}
                   id={`Rank-${row.original.Rank}`}
-                  className="text-white hover:bg-white hover:text-regal-blue ease-in duration-200 h-10   hover:cursor-pointer"
+                  className=" text-white hover:bg-white hover:text-regal-blue ease-in duration-200 h-10   hover:cursor-pointer"
                 >
                   <span>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
