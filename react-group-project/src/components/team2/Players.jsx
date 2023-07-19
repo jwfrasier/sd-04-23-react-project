@@ -1,33 +1,28 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../../App.css";
-import { useSelector } from "react-redux";
-import { createClient } from "@supabase/supabase-js";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+
 import {
   useReactTable,
   getCoreRowModel,
   flexRender,
 } from "@tanstack/react-table";
-import supabaseConfig from "../../../../supabaseConfig";
-import { useEffect } from "react";
+
+import {
+  fetchTournamentData,
+  setSelectedPlayer,
+} from "./../../reducers/playersSlice";
+
 function Players() {
-  const [selectedPlayer, setSelectedPlayer] = useState(null);
-  const [esports, setEsports] = useState([]);
-  const { supabaseUrl, supabaseKey } = supabaseConfig;
-  const supabase = createClient(supabaseUrl, supabaseKey);
+  const [selectedPlayer, setSelectedPlayerState] = useState(null);
+  const dispatch = useDispatch();
+
+  const esports = useSelector((state) => state.players.value);
 
   useEffect(() => {
-    const fetchEsportsData = async () => {
-      const { data, error } = await supabase.from("esports").select();
-      console.log(data);
-      if (error) {
-        // Handle the error if needed
-        console.error("Error fetching data:", error);
-      } else {
-        setEsports(data);
-      }
-    };
-    fetchEsportsData();
-  }, []);
+    dispatch(fetchTournamentData());
+  }, [dispatch]);
 
   const columns = [
     {
@@ -55,7 +50,8 @@ function Players() {
   });
 
   const handlePlayerClick = (player) => {
-    setSelectedPlayer(player);
+    setSelectedPlayerState(player);
+    dispatch(setSelectedPlayer(player));
   };
 
   return (
@@ -119,7 +115,7 @@ function Players() {
             <p>Favorite energy drink: {selectedPlayer["Energy Drink"]}</p>
             <button
               className="close-button"
-              onClick={() => setSelectedPlayer(null)}
+              onClick={() => setSelectedPlayerState(null)}
             >
               Close
             </button>
