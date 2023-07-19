@@ -1,8 +1,4 @@
-/**
- * eslint-disable react/prop-types
- *
- * @format
- */
+/** eslint-disable react/prop-types*/
 
 import "../../App.css";
 import React from "react";
@@ -41,7 +37,7 @@ const Tournament = ({ tournamentImages }) => {
   }
 
   return (
-    <div>
+    <div className="tournament-page">
       {/* Render the tournament data */}
       <div className="product-card-container">
         {tournamentImages.map((images, index) => (
@@ -49,7 +45,9 @@ const Tournament = ({ tournamentImages }) => {
             <img src={images.image} alt="photo" />
             {/* Render the tournament data for the corresponding image */}
             <div className="tournament-data" key={tournaments[index].id}>
-              <h2>{tournaments[index].tournaments_name}</h2>
+              <h2 className="tournament-name">
+                {tournaments[index].tournaments_name}
+              </h2>
               <h2>{tournaments[index].tournaments_location}</h2>
               <h2>{tournaments[index].tournaments_participants_username}</h2>
               <h2>Start: {tournaments[index].tournaments_startDate}</h2>
