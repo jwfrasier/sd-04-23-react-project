@@ -3,10 +3,11 @@ import {
   getCoreRowModel,
   flexRender,
 } from "@tanstack/react-table";
-import { useMemo, useEffect } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { fetchEsports } from "../../reducers/esportsSlice";
+import PlayerCard from "./PlayerCard";
 
 export const MainTable = () => {
   const dispatch = useDispatch();
@@ -63,6 +64,20 @@ export const MainTable = () => {
     getCoreRowModel: getCoreRowModel(),
   });
 
+  const [selectedRowData, setSelectedRowData] = useState(null); // Local state to store selected row's data
+  const [isDetailsVisible, setIsDetailsVisible] = useState(false); // Local state to toggle DetailsComponent visibility
+
+  // Function to handle row click
+  const handleRowClick = (row) => {
+    setSelectedRowData(row.original); // Store the clicked row's data in local state
+    setIsDetailsVisible(true); // Show DetailsComponent on row click
+  };
+
+  // Function to close DetailsComponent
+  const handleCloseDetails = () => {
+    setIsDetailsVisible(false); // Hide DetailsComponent
+  };
+
   // console.log(table.getRowModel());
   // console.log({ esports });
 
@@ -86,7 +101,7 @@ export const MainTable = () => {
           </thead>
           <tbody>
             {table.getRowModel().rows.map((row) => (
-              <tr key={row.id}>
+              <tr key={row.id} onClick={() => handleRowClick(row)}>
                 {row.getVisibleCells().map((cell) => (
                   <td
                     key={cell.id}
@@ -105,6 +120,9 @@ export const MainTable = () => {
             ))}
           </tbody>
         </table>
+        {isDetailsVisible && (
+          <PlayerCard rowData={selectedRowData} onClose={handleCloseDetails} />
+        )}{" "}
       </div>
     </>
   );
