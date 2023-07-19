@@ -1,4 +1,3 @@
-// playersSlice.js
 import { createClient } from "@supabase/supabase-js";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import supabaseConfig from "../../../supabaseConfig";
