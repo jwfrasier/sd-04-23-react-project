@@ -84,7 +84,7 @@ export const MainTable = () => {
   return (
     <>
       <div className="shadow-xl text-white text-center">
-        <table className="min-w-full bg-indigo-500 border rounded-lg">
+        <table className="min-w-full bg-blue-500 border rounded-lg">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
