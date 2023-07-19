@@ -8,14 +8,14 @@ const Nav = ({ isSelected, setIsSelected }) => {
   const links = [
     { text: "Home", icon: <FaHome /> },
     { text: "Tournaments", icon: <PiNumberOneBold /> },
-    { text: "Team 2", icon: <PiNumberTwoBold /> },
+    { text: "Players", icon: <PiNumberTwoBold /> },
   ];
 
   const handleLinkClick = (linkName) => {
     setIsSelected(linkName);
   };
   return (
-    <nav className="absolute bottom-0 w-full bg-gray-200 h-20  text-slate-800 flex items-center nav_shadow lg:relative lg:justify-between">
+    <nav className="absolute bottom-0 w-full bg-stone-950 h-20  text-zinc-50 flex items-center nav_shadow lg:relative lg:justify-between">
       <div className="hidden lg:flex items-center gap-3">
         <span className="text-4xl">
           <FaReact />
