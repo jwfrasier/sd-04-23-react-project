@@ -83,8 +83,8 @@ export const MainTable = () => {
 
   return (
     <>
-      <div className="shadow-xl text-white text-center">
-        <table className="min-w-full bg-blue-500 border rounded-lg">
+      <div className="shadow-xl text-white text-center w-128">
+        <table className="min-w-full bg-[#537188] border rounded-lg">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
@@ -106,7 +106,7 @@ export const MainTable = () => {
                   <td
                     key={cell.id}
                     id={`State-${row.original.state}`}
-                    className="border px-10 py-1"
+                    className="border px-10 py-1 border-[#dfd7bf]"
                   >
                     <span>
                       {flexRender(
