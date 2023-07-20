@@ -35,45 +35,59 @@ const FilterBar = () => {
     setSelectedValue(null);
   };
 
+  const UniqueValuesComponent = ({ values, selectedValue, onClick }) => (
+    <div className="flex flex-col pt-4 justify-center">
+      {values.map((item) => (
+        <div key={item} className="flex justify-center">
+          {" "}
+          {/* Added 'flex' and 'justify-center' */}
+          <button
+            onClick={() => onClick(item)}
+            className={`bg-[#dfd7bf] text-[#537188] px-4 py-2 rounded w-48 mt-2 ${
+              selectedValue === item
+                ? "bg-[#CBB279] text-white"
+                : "bg-[#dfd7bf] text-[#537188]"
+            } hover:bg-[#CBB279] hover:text-[#537188]`}
+          >
+            {item}
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <>
-      <div className="bg-blue-500">
+      <div className="h-screen flex flex-col bg-[#537188] rounded text-center pt-4">
         <div className="flex flex-col mb-4 w-64">
-          {Object.entries(filters).map(([key, label]) => (
+          {Object.entries(filters).map(([key, label], index) => (
             <div key={key} className="mb-4">
               <button
                 onClick={() => handleFilterClick(key)}
-                className={`px-4 py-2 rounded ${
+                className={`w-48 px-4 py-2 rounded bg-[#dfd7bf] text-[#537188] ${
                   activeFilter === key
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-200"
-                } hover:bg-white hover:text-blue-500`}
+                    ? "bg-[#CBB279] text-white"
+                    : "bg-[#dfd7bf] text-[#537188]"
+                } transition-all duration-200 hover:bg-[#CBB279] hover:text-[#537188]`}
               >
                 {label}
               </button>
               {activeFilter === key && (
-                <div className="flex flex-col mt-2">
-                  {uniqueValues.map((item) => (
-                    <button
-                      key={item}
-                      onClick={() => handleClick(key, item)}
-                      className={`px-4 py-2 rounded ${
-                        selectedValue === item
-                          ? "bg-blue-500 text-white"
-                          : "bg-gray-200"
-                      } hover:bg-white hover:text-blue-500`}
-                    >
-                      {item}
-                    </button>
-                  ))}
-                </div>
+                <UniqueValuesComponent
+                  values={uniqueValues}
+                  selectedValue={selectedValue}
+                  onClick={(item) => handleClick(key, item)}
+                />
+              )}
+              {index < Object.entries(filters).length && (
+                <hr className="mx-auto my-4 border-[#dfd7bf] w-48" />
               )}
             </div>
           ))}
         </div>
         <button
           onClick={handleClearFilters}
-          className="w-full mt-4 px-4 py-2 rounded bg-red-500 text-white hover:bg-white hover:text-red-500"
+          className="w-full mt-4 px-4 py-2 rounded bg-red-500 text-white hover:bg-[#CBB279] hover:text-red-500 hover:font-bold"
         >
           Remove Filters
         </button>
@@ -82,9 +96,9 @@ const FilterBar = () => {
   );
 };
 
-export default FilterBar;
-
 const getUniqueValues = (data, key) => {
   const values = data.map((item) => item[key]);
   return [...new Set(values)];
 };
+
+export default FilterBar;
