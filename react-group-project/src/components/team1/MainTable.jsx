@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { fetchEsports } from "../../reducers/esportsSlice";
 import PlayerCard from "./PlayerCard";
+import PlayerCardModal from "./PlayerCardModal";
 
 export const MainTable = () => {
   const dispatch = useDispatch();
@@ -65,17 +66,17 @@ export const MainTable = () => {
   });
 
   const [selectedRowData, setSelectedRowData] = useState(null); // Local state to store selected row's data
-  const [isDetailsVisible, setIsDetailsVisible] = useState(false); // Local state to toggle DetailsComponent visibility
+  const [isModalOpen, setIsModalOpen] = useState(false); // Local state to control the visibility of the modal
 
   // Function to handle row click
   const handleRowClick = (row) => {
     setSelectedRowData(row.original); // Store the clicked row's data in local state
-    setIsDetailsVisible(true); // Show DetailsComponent on row click
+    setIsModalOpen(true); // Show modal on row click
   };
 
-  // Function to close DetailsComponent
-  const handleCloseDetails = () => {
-    setIsDetailsVisible(false); // Hide DetailsComponent
+  // Function to close the modal
+  const handleCloseModal = () => {
+    setIsModalOpen(false); // Hide modal
   };
 
   // console.log(table.getRowModel());
@@ -83,46 +84,51 @@ export const MainTable = () => {
 
   return (
     <>
-      <div className="shadow-xl text-white text-center w-128">
-        <table className="min-w-full bg-[#537188] border rounded-lg">
-          <thead>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
-                  <th key={header.id} className="px-10">
-                    {flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody>
-            {table.getRowModel().rows.map((row) => (
-              <tr key={row.id} onClick={() => handleRowClick(row)}>
-                {row.getVisibleCells().map((cell) => (
-                  <td
-                    key={cell.id}
-                    id={`State-${row.original.state}`}
-                    className="border px-10 py-1 border-[#dfd7bf]"
-                  >
-                    <span>
+      <div className="text-white text-center">
+        <div className="overflow-x-auto">
+          <table className="w-full bg-[#537188] border rounded-lg">
+            <thead>
+              {table.getHeaderGroups().map((headerGroup) => (
+                <tr key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => (
+                    <th key={header.id} className="px-10">
                       {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
+                        header.column.columnDef.header,
+                        header.getContext()
                       )}
-                    </span>
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        {isDetailsVisible && (
-          <PlayerCard rowData={selectedRowData} onClose={handleCloseDetails} />
-        )}{" "}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody>
+              {table.getRowModel().rows.map((row) => (
+                <tr key={row.id} onClick={() => handleRowClick(row)}>
+                  {row.getVisibleCells().map((cell) => (
+                    <td
+                      key={cell.id}
+                      id={`State-${row.original.state}`}
+                      className="border px-10 py-1 border-[#dfd7bf] whitespace-nowrap"
+                    >
+                      <span>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </span>
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {isModalOpen && (
+            <PlayerCardModal
+              rowData={selectedRowData}
+              onClose={handleCloseModal}
+            />
+          )}{" "}
+        </div>
       </div>
     </>
   );

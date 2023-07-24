@@ -9,11 +9,11 @@ const Component1 = () => {
 
   return (
     <>
-      <div className="flex">
-        <div>
+      <div className="lg:flex">
+        <div className="lg:w-64">
           <FilterBar />
         </div>
-        <div className="mx-auto">
+        <div className="w-full mt-4 lg:mt-0">
           <MainTable />
         </div>
       </div>
