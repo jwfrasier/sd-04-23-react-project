@@ -59,7 +59,7 @@ const FilterBar = () => {
   return (
     <>
       <div className="h-screen flex flex-col bg-[#537188] rounded text-center pt-4">
-        <div className="flex flex-col mb-4 w-64">
+        <div className="flex flex-col mb-4 sm:w-64">
           {Object.entries(filters).map(([key, label], index) => (
             <div key={key} className="mb-4">
               <button
@@ -87,7 +87,7 @@ const FilterBar = () => {
         </div>
         <button
           onClick={handleClearFilters}
-          className="w-full mt-4 px-4 py-2 rounded bg-red-500 text-white hover:bg-[#CBB279] hover:text-red-500 hover:font-bold"
+          className="w-48 px-4 py-2 rounded bg-red-500 text-white hover:bg-[#CBB279] hover:text-red-500 hover:font-bold mx-auto"
         >
           Remove Filters
         </button>
