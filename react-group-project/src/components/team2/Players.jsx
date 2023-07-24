@@ -53,9 +53,10 @@ function Players() {
     setSelectedPlayerState(player);
     dispatch(setSelectedPlayer(player));
   };
+  const columnNames = ["Full Name", "Age", "Country", "Rank"];
 
   return (
-    <div className="flex flex-col  justify-evenly">
+    <div className="flex flex-col  justify-evenly pt-10">
       <table className="players-table">
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
@@ -73,13 +74,15 @@ function Players() {
         <tbody>
           {table.getRowModel().rows.map((row) => (
             <tr key={row.id} onClick={() => handlePlayerClick(row.original)}>
-              {row.getVisibleCells().map((cell) => (
+              {row.getVisibleCells().map((cell, index) => (
                 <td
                   key={cell.id}
-                  id={`Rank-${row.original.Rank}`}
+                  id={`${columnNames[index]}-${
+                    row.original[columnNames[index]]
+                  }`}
                   className=" text-white hover:bg-white hover:text-regal-blue ease-in duration-200 h-10   hover:cursor-pointer"
                 >
-                  <span>
+                  <span id={`Country-${row.original.Country}`}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </span>
                 </td>

@@ -15,7 +15,7 @@ const Nav = ({ isSelected, setIsSelected }) => {
     setIsSelected(linkName);
   };
   return (
-    <nav className="absolute bottom-0 w-full bg-stone-950 h-20  text-zinc-50 flex items-center nav_shadow lg:relative lg:justify-between">
+    <nav className="fixed bottom-0 w-full bg-stone-950 h-20  text-zinc-50 flex items-center nav_shadow lg:relative lg:justify-between">
       <div className="hidden lg:flex items-center gap-3">
         <span className="text-4xl">
           <FaReact />
